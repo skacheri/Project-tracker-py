@@ -188,6 +188,8 @@ COPY public.grades (id, student_github, project_title, grade) FROM stdin;
 2	jhacks	Blockly	2
 3	sdevelops	Markov	50
 4	sdevelops	Blockly	100
+6	rparks	Markov	25
+7	jdebugger	Markov	11
 \.
 
 
@@ -211,6 +213,8 @@ COPY public.projects (id, title, description, max_grade) FROM stdin;
 COPY public.students (id, first_name, last_name, github) FROM stdin;
 1	Jane	Hacker	jhacks
 2	Sarah	Develeoper	sdevelops
+3	Jasmine	Debugger	jdebugger
+4	Rosa	Parks	rparks
 \.
 
 
@@ -218,7 +222,7 @@ COPY public.students (id, first_name, last_name, github) FROM stdin;
 -- Name: grades_id_seq; Type: SEQUENCE SET; Schema: public; Owner: engineer
 --
 
-SELECT pg_catalog.setval('public.grades_id_seq', 4, true);
+SELECT pg_catalog.setval('public.grades_id_seq', 7, true);
 
 
 --
@@ -232,7 +236,7 @@ SELECT pg_catalog.setval('public.projects_id_seq', 5, true);
 -- Name: students_id_seq; Type: SEQUENCE SET; Schema: public; Owner: engineer
 --
 
-SELECT pg_catalog.setval('public.students_id_seq', 2, true);
+SELECT pg_catalog.setval('public.students_id_seq', 4, true);
 
 
 --
