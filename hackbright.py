@@ -92,17 +92,13 @@ def assign_grade(github, title, grade):
             VALUES (:title, :grade, :github)
             """
 
-    # db.session.execute(QUERY, {'title': title,
-    #                             'grade': grade,
-    #                             'github': github})
-
     QUERYMAX = """
                 SELECT max_grade FROM projects WHERE title = :title
                 """
 
     db_cursor = db.session.execute(QUERYMAX, {'title': title})
     row = db_cursor.fetchone()
-    if row[0] <= grade:
+    if row[0] < int(grade):
         print("Invalid grade")
     else:
         db.session.execute(QUERY, {'title': title, 'grade': grade,
@@ -154,7 +150,7 @@ def handle_input():
 if __name__ == "__main__":
     connect_to_db(app)
 
-    # handle_input()
+    handle_input()
 
     # To be tidy, we close our database connection -- though,
     # since this is where our program ends, we'd quit anyway.
